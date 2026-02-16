@@ -14,3 +14,10 @@ void menuJugar()
     cout << "|______________________________|" << endl;
     cout << " Ingrese una opcion:       " << endl;
 }
+
+void menuOpciones()
+{
+    cout << "1. Piedra" << endl;
+    cout << "2. Papel" << endl;
+    cout << "3. Tijeras" << endl;
+}
