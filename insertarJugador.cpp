@@ -1,7 +1,4 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-
 using namespace std;
 
 struct Jugador
@@ -12,82 +9,22 @@ struct Jugador
     Jugador *siguiente;
 };
 
-void limpiarPantalla()
-{
-    // system("cls"); // Para Windows
-    system("clear"); // Para Linux/Mac
-}
-
-void menu()
-{
-    cout << " ===================================" << endl;
-    cout << "|      MENU DE OPCIONES             |" << endl;
-    cout << "|===================================|" << endl;
-    cout << "|     Ingrese una opcion:           |" << endl;
-    cout << "|     1. Ingresar jugadores.        |" << endl;
-    cout << "|     2. Empezar a jugar.           |" << endl;
-    cout << "|     3. Eliminar jugador.          |" << endl;
-    cout << "|     4. Instrucciones.             |" << endl;
-    cout << "|     5. Mostrar ganador.           |" << endl;
-    cout << "|     6. Mostrar jugadores.         |" << endl;
-    cout << "|     7. Salir del juego.           |" << endl;
-    cout << "|___________________________________|" << endl;
-}
-
-void menuJugar()
-{
-    cout << "|==============================" << endl;
-    cout << "|       MODO DE JUEGO          |" << endl;
-    cout << "|==============================|" << endl;
-    cout << "| 1. Seleccion manual.         |" << endl;
-    cout << "| 2. Seleccion aleatoria.      |" << endl;
-    cout << "|______________________________|" << endl;
-    cout << " Ingrese una opcion:       " << endl;
-}
-
-void instrucciones()
-{
-    cout << " ____________________________________________________________________________________" << endl;
-    cout << "|                                                                                    |" << endl;
-    cout << "|                                    INSTRUCCIONES                                   |" << endl;
-    cout << "|____________________________________________________________________________________|" << endl;
-    cout << "|                                                                                    |" << endl;
-    cout << "|  Para poder jugar piedra papel o tijeras se hace lo siguiente:                     |" << endl;
-    cout << "|  1.Cada partida se hace entre 2 personas.                                          |" << endl;
-    cout << "|  2. los jugadores podran escoger una entre 3 opciones: piedra, papel o tijeras.    |" << endl;
-    cout << "|  3. La Piedra solo puede ganarle a las tijeras.                                    |" << endl;
-    cout << "|     El papel solo puede ganarle a la piedra.                                       |" << endl;
-    cout << "|     Las tijeras solo pueden ganarle al papel.                                      |" << endl;
-    cout << "|____________________________________________________________________________________|" << endl;
-}
-
-void menuOpciones()
-{
-    cout << "1. Piedra" << endl;
-    cout << "2. Papel" << endl;
-    cout << "3. Tijeras" << endl;
-}
-
 bool ExisteID(Jugador *frente, int IDexiste)
 {
-
     if (frente == NULL)
     {
-        return false; // Si no hay nada en la lista regresa falso
+        return false;
     }
-    Jugador *actual = frente; // Se crea una variable auxiliar para poder buscar
-
+    Jugador *actual = frente;
     do
     {
         if (actual->id == IDexiste)
         {
-            return true; // En el caso que al buscar un id coincida, va a retornar true
+            return true;
         }
-        actual = actual->siguiente; // Hasta que lo encuentre va a recorrer toda la lista de jugadores
-
-    } while (actual != frente); // Hasta que llegue de nuevo al frente
-
-    return false; // De lo contrario, si no lo encontro despues de recorrer, regresa falso
+        actual = actual->siguiente;
+    } while (actual != frente);
+    return false;
 }
 
 void insertarJugador(Jugador *&frente, Jugador *&cola)
@@ -102,22 +39,22 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
 
     if (ExisteID(frente, nuevo->id))
     {
-        cout << "El id ya existe,ingrese otro id y vuelva a intentarlo." << endl;
+        cout << "El id ya existe, ingrese otro id y vuelva a intentarlo." << endl;
         delete nuevo;
         return;
     }
 
-    nuevo->puntaje = 0; // Iguala el puntaje del nuevo jugador en 0
+    nuevo->puntaje = 0;
 
-    if (frente == NULL) // Si no hay nada en el frente, guarda los datos en el frente y en la cola al solo haber 1 elemento
+    if (frente == NULL)
     {
         frente = nuevo;
         cola = nuevo;
-        nuevo->siguiente = frente; // Hace que el nuevo elemento apunte al primero, convirtiendolo en circular
+        nuevo->siguiente = frente;
     }
     else
     {
-        cola->siguiente = nuevo; // Si ya habia un elemento, el siguiente elemento que se agregue va a ir despues de la cola actual
+        cola->siguiente = nuevo;
         nuevo->siguiente = frente;
         cola = nuevo;
     }
