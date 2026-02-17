@@ -119,7 +119,7 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
     else
     {
         cola->siguiente = nuevo; // Si ya habia un elemento, el siguiente elemento que se agregue va a ir despues de la cola actual
-        nuevo->siguiente = frente;
+        nuevo->siguiente = frente;// El nuevo elemento apuntara al frente.
         cola = nuevo;
     }
 }
@@ -176,7 +176,7 @@ void jugar(Jugador *frente, Jugador *cola)
 
     do
     {
-        jugador2 = jugador1->siguiente;
+        jugador2 = jugador1->siguiente;// El jugador 2 sera el que sigue del jugador 1 para que se enfrenten entre si 
         cout << "Partida entre " << jugador1->jugador << " y " << jugador2->jugador << endl
              << endl;
 
@@ -196,20 +196,20 @@ void jugar(Jugador *frente, Jugador *cola)
 
                 if (opcion == opcion2)
                 {
-                    cout << "Esto es un empate" << endl;
+                    cout << "Esto es un empate" << endl;//si ambos jugadores escogen la misma opcion, se declara un empate y no se suman puntos a ninguno de los jugadores
                 }
-                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2))
+                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2))// se verifican todos los casos en los que pueda ganar el jugador 1
                 {
 
                     cout << "Ha ganado : " << jugador1->jugador << endl
                          << endl;
-                    jugador1->puntaje++;
+                    jugador1->puntaje++;// Si el jugador 1 gana, se le suma un punto a su puntaje
                 }
                 else
                 {
                     cout << "Ha ganado : " << jugador2->jugador << endl
                          << endl;
-                    jugador2->puntaje++;
+                    jugador2->puntaje++;// Caso contrario el jugador 2 gana puntos
                 }
             }
             else if (modo == 2)
@@ -238,13 +238,13 @@ void jugar(Jugador *frente, Jugador *cola)
                 cout << "opcion invalida" << endl;
             }
 
-            jugador2 = jugador2->siguiente;
+            jugador2 = jugador2->siguiente;// El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores
 
-        } while (jugador2 != frente);
+        } while (jugador2 != frente);//se va a mover el jugador 2 hasta que este vuelva a ser el mismo que el jugador 1
 
-        jugador1 = jugador1->siguiente;
+        jugador1 = jugador1->siguiente;// una vez pase lo anterior, el jugador 1 pasa a ser el siguiente jugador
 
-    } while (jugador1 != cola);
+    } while (jugador1 != cola);// se va a mover el jugador 1 hasta que llegue a la cola, lo que quiere decir que ya se enfrentaron todos los jugadores entre si
 }
 
 void mostrarJugadores(Jugador *frente)
@@ -264,9 +264,9 @@ void mostrarJugadores(Jugador *frente)
              << " | ID: " << aux->id
              << " | Puntaje: " << aux->puntaje << endl;
 
-        aux = aux->siguiente;
+        aux = aux->siguiente;// una vez imprime los datos del primer jugador, pasa a imprimir los datos del siguiente
 
-    } while (aux != frente);
+    } while (aux != frente);//hasta que este llegue a volver a ser el del frente
 }
 
 void mostrarGanador(Jugador *frente)
