@@ -20,45 +20,67 @@ void limpiarPantalla()
 
 void menu()
 {
-    cout << " ===================================" << endl;
-    cout << "|      MENU DE OPCIONES             |" << endl;
-    cout << "|===================================|" << endl;
-    cout << "|     Ingrese una opcion:           |" << endl;
-    cout << "|     1. Ingresar jugadores.        |" << endl;
-    cout << "|     2. Empezar a jugar.           |" << endl;
-    cout << "|     3. Eliminar jugador.          |" << endl;
-    cout << "|     4. Instrucciones.             |" << endl;
-    cout << "|     5. Mostrar ganador.           |" << endl;
-    cout << "|     6. Mostrar jugadores.         |" << endl;
-    cout << "|     7. Salir del juego.           |" << endl;
-    cout << "|___________________________________|" << endl;
+    cout << "\033[34m ===================================\033[0m" << endl;
+
+    cout << "\033[34m|\033[35m      MENU DE OPCIONES             \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|===================================|\033[0m" << endl;
+
+    cout << "\033[34m|     \033[33mIngrese una opcion:           \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|     \033[32m1. Ingresar jugadores.        \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m2. Empezar a jugar.           \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m3. Eliminar jugador.          \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m4. Instrucciones.             \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m5. Mostrar ganador.           \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m6. Mostrar jugadores.         \033[34m|\033[0m" << endl;
+    cout << "\033[34m|     \033[32m7. Salir del juego.           \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|___________________________________|\033[0m" << endl;
 }
 
 void menuJugar()
 {
-    cout << "|==============================" << endl;
-    cout << "|       MODO DE JUEGO          |" << endl;
-    cout << "|==============================|" << endl;
-    cout << "| 1. Seleccion manual.         |" << endl;
-    cout << "| 2. Seleccion aleatoria.      |" << endl;
-    cout << "|______________________________|" << endl;
-    cout << " Ingrese una opcion:       " << endl;
+    cout << "\033[34m|==============================|\033[0m" << endl;
+
+    cout << "\033[34m|\033[35m       MODO DE JUEGO          \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|==============================|\033[0m" << endl;
+
+    cout << "\033[34m| \033[32m1. Seleccion manual.         \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m| \033[32m2. Seleccion aleatoria.      \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|______________________________|\033[0m" << endl;
+
+    cout << "\033[33m Ingrese una opcion:       \033[0m" << endl;
 }
 
 void instrucciones()
 {
-    cout << " ____________________________________________________________________________________" << endl;
-    cout << "|                                                                                    |" << endl;
-    cout << "|                                    INSTRUCCIONES                                   |" << endl;
-    cout << "|____________________________________________________________________________________|" << endl;
-    cout << "|                                                                                    |" << endl;
-    cout << "|  Para poder jugar piedra papel o tijeras se hace lo siguiente:                     |" << endl;
-    cout << "|  1.Cada partida se hace entre 2 personas.                                          |" << endl;
-    cout << "|  2. los jugadores podran escoger una entre 3 opciones: piedra, papel o tijeras.    |" << endl;
-    cout << "|  3. La Piedra solo puede ganarle a las tijeras.                                    |" << endl;
-    cout << "|     El papel solo puede ganarle a la piedra.                                       |" << endl;
-    cout << "|     Las tijeras solo pueden ganarle al papel.                                      |" << endl;
-    cout << "|____________________________________________________________________________________|" << endl;
+    cout << "\033[34m ____________________________________________________________________________________\033[0m" << endl;
+
+    cout << "\033[34m|\033[0m                                                                                    \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|\033[35m                                    INSTRUCCIONES                                   \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|____________________________________________________________________________________|\033[0m" << endl;
+
+    cout << "\033[34m|\033[0m                                                                                    \033[34m|\033[0m" << endl;
+
+    cout << "\033[34m|  \033[33mPara poder jugar piedra papel o tijeras se hace lo siguiente:\033[34m                     |\033[0m" << endl;
+
+    cout << "\033[34m|  \033[32m1. Cada partida se hace entre 2 personas.\033[34m                                         |\033[0m" << endl;
+
+    cout << "\033[34m|  \033[32m2. Los jugadores podran escoger una entre 3 opciones: piedra, papel o tijeras.\033[34m    |\033[0m" << endl;
+
+    cout << "\033[34m|  \033[32m3. La Piedra solo puede ganarle a las tijeras.\033[34m                                    |\033[0m" << endl;
+
+    cout << "\033[34m|     \033[32mEl papel solo puede ganarle a la piedra.\033[34m                                       |\033[0m" << endl;
+
+    cout << "\033[34m|     \033[32mLas tijeras solo pueden ganarle al papel.\033[34m                                      |\033[0m" << endl;
+
+    cout << "\033[34m|____________________________________________________________________________________|\033[0m" << endl;
 }
 
 void menuOpciones()
@@ -103,7 +125,12 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
     if (ExisteID(frente, nuevo->id))
     {
 
-        cout << "El id ya existe,ingrese otro id y vuelva a intentarlo." << endl;
+        cout << "El id ya existe,ingrese otro id y vuelva a intentarlo." << endl
+             << endl;
+        cout << "\nPresione ENTER para continuar..." << endl;
+        cin.ignore();
+        cin.get();
+
         delete nuevo;
         return;
     }
@@ -118,8 +145,8 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
     }
     else
     {
-        cola->siguiente = nuevo; // Si ya habia un elemento, el siguiente elemento que se agregue va a ir despues de la cola actual
-        nuevo->siguiente = frente;// El nuevo elemento apuntara al frente.
+        cola->siguiente = nuevo;   // Si ya habia un elemento, el siguiente elemento que se agregue va a ir despues de la cola actual
+        nuevo->siguiente = frente; // El nuevo elemento apuntara al frente.
         cola = nuevo;
     }
 }
@@ -141,6 +168,9 @@ void jugar(Jugador *frente, Jugador *cola)
 {
     if (estaVacio(frente))
     {
+        cout << "\nPresione ENTER para continuar..." << endl;
+        cin.ignore();
+        cin.get();
         return;
     }
 
@@ -153,6 +183,9 @@ void jugar(Jugador *frente, Jugador *cola)
     {
         cout << "Se necesita mas de un jugador para poder empezar" << endl
              << endl;
+        cout << "\nPresione ENTER para continuar..." << endl;
+        cin.ignore();
+        cin.get();
         return;
     }
 
@@ -171,12 +204,12 @@ void jugar(Jugador *frente, Jugador *cola)
     }
     else
     {
-        cout << "Opcion invalida." << endl;
+        cout << "\033[31mOpcion invalida.\033[0m" << endl;
     }
 
     do
     {
-        jugador2 = jugador1->siguiente;// El jugador 2 sera el que sigue del jugador 1 para que se enfrenten entre si 
+        jugador2 = jugador1->siguiente; // El jugador 2 sera el que sigue del jugador 1 para que se enfrenten entre si
         cout << "Partida entre " << jugador1->jugador << " y " << jugador2->jugador << endl
              << endl;
 
@@ -196,20 +229,27 @@ void jugar(Jugador *frente, Jugador *cola)
 
                 if (opcion == opcion2)
                 {
-                    cout << "Esto es un empate" << endl;//si ambos jugadores escogen la misma opcion, se declara un empate y no se suman puntos a ninguno de los jugadores
+                    cout << "Esto es un empate" << endl; // si ambos jugadores escogen la misma opcion, se declara un empate y no se suman puntos a ninguno de los jugadores
                 }
-                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2))// se verifican todos los casos en los que pueda ganar el jugador 1
+                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2)) // se verifican todos los casos en los que pueda ganar el jugador 1
                 {
 
                     cout << "Ha ganado : " << jugador1->jugador << endl
                          << endl;
-                    jugador1->puntaje++;// Si el jugador 1 gana, se le suma un punto a su puntaje
+                    jugador1->puntaje++; // Si el jugador 1 gana, se le suma un punto a su puntaje
+                    cout << "\nPresione ENTER para continuar..." << endl;
+                    cin.ignore();
+                    cin.get();
                 }
                 else
                 {
                     cout << "Ha ganado : " << jugador2->jugador << endl
                          << endl;
-                    jugador2->puntaje++;// Caso contrario el jugador 2 gana puntos
+                    jugador2->puntaje++; // Caso contrario el jugador 2 gana puntos
+
+                    cout << "\nPresione ENTER para continuar..." << endl;
+                    cin.ignore();
+                    cin.get();
                 }
             }
             else if (modo == 2)
@@ -226,11 +266,17 @@ void jugar(Jugador *frente, Jugador *cola)
 
                     cout << "Ha ganado : " << jugador1->jugador << endl;
                     jugador1->puntaje++;
+                    cout << "\nPresione ENTER para continuar..." << endl;
+                    cin.ignore();
+                    cin.get();
                 }
                 else
                 {
                     cout << "Ha ganado : " << jugador2->jugador << endl;
                     jugador2->puntaje++;
+                    cout << "\nPresione ENTER para continuar..." << endl;
+                    cin.ignore();
+                    cin.get();
                 }
             }
             else
@@ -238,13 +284,13 @@ void jugar(Jugador *frente, Jugador *cola)
                 cout << "opcion invalida" << endl;
             }
 
-            jugador2 = jugador2->siguiente;// El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores
+            jugador2 = jugador2->siguiente; // El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores
 
-        } while (jugador2 != frente);//se va a mover el jugador 2 hasta que este vuelva a ser el mismo que el jugador 1
+        } while (jugador2 != frente); // se va a mover el jugador 2 hasta que este vuelva a ser el mismo que el jugador 1
 
-        jugador1 = jugador1->siguiente;// una vez pase lo anterior, el jugador 1 pasa a ser el siguiente jugador
+        jugador1 = jugador1->siguiente; // una vez pase lo anterior, el jugador 1 pasa a ser el siguiente jugador
 
-    } while (jugador1 != cola);// se va a mover el jugador 1 hasta que llegue a la cola, lo que quiere decir que ya se enfrentaron todos los jugadores entre si
+    } while (jugador1 != cola); // se va a mover el jugador 1 hasta que llegue a la cola, lo que quiere decir que ya se enfrentaron todos los jugadores entre si
 }
 
 void mostrarJugadores(Jugador *frente)
@@ -264,9 +310,9 @@ void mostrarJugadores(Jugador *frente)
              << " | ID: " << aux->id
              << " | Puntaje: " << aux->puntaje << endl;
 
-        aux = aux->siguiente;// una vez imprime los datos del primer jugador, pasa a imprimir los datos del siguiente
+        aux = aux->siguiente; // una vez imprime los datos del primer jugador, pasa a imprimir los datos del siguiente
 
-    } while (aux != frente);//hasta que este llegue a volver a ser el del frente
+    } while (aux != frente); // hasta que este llegue a volver a ser el del frente
 }
 
 void mostrarGanador(Jugador *frente)
@@ -299,7 +345,9 @@ void eliminar(Jugador *&frente, Jugador *&cola)
 {
     if (estaVacio(frente))
     {
-        cout << "No hay jugadores para eliminar." << endl;
+        cout << "\nPresione ENTER para continuar..." << endl;
+        cin.ignore();
+        cin.get();
         return;
     }
 
@@ -314,7 +362,11 @@ void eliminar(Jugador *&frente, Jugador *&cola)
     {
         if (actual->siguiente == frente)
         {
-            cout << "Jugador con ID " << idEliminar << " no encontrado." << endl;
+            cout << "Jugador con ID " << idEliminar << " no encontrado." << endl
+                 << endl;
+            cout << "\nPresione ENTER para continuar..." << endl;
+            cin.ignore();
+            cin.get();
             return;
         }
         anterior = actual;
@@ -345,6 +397,9 @@ void eliminar(Jugador *&frente, Jugador *&cola)
 
     delete actual;
     cout << "Jugador con ID " << idEliminar << " eliminado exitosamente." << endl;
+    cout << "\nPresione ENTER para continuar..." << endl;
+    cin.ignore();
+    cin.get();
 }
 
 int main()
