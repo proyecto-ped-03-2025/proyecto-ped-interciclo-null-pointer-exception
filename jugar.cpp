@@ -42,6 +42,13 @@ bool estaVacio(Jugador *frente)
     }
 }
 
+void esperar() // Función para pausar la ejecución y esperar a que el usuario presione ENTER
+{
+    cout << "\nPresione ENTER para continuar..." << endl;
+    cin.ignore();
+    cin.get();
+}
+
 void jugar(Jugador *frente, Jugador *cola)
 {
     if (estaVacio(frente))
