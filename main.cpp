@@ -18,7 +18,7 @@ void limpiarPantalla()
     system("clear"); // Para Linux/Mac
 }
 
-void esperar()//commit 1
+void esperar() // commit 1
 {
     cout << "\nPresione ENTER para continuar..." << endl;
     cin.ignore();
@@ -123,8 +123,8 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
 {
     Jugador *nuevo = new Jugador;
 
-    cout << "Ingrese el nombre: " << endl;//agregar un getline para agregar nombres con espacios
-    cin.ignore(); // Limpiar el buffer de entrada
+    cout << "Ingrese el nombre: " << endl; // agregar un getline para agregar nombres con espacios
+    cin.ignore();                          // Limpiar el buffer de entrada
     getline(cin, nuevo->jugador);
 
     cout << "Ingrese el id unico del jugador:" << endl;
@@ -231,10 +231,10 @@ void jugar(Jugador *frente, Jugador *cola)
 
                 if (opcion == opcion2)
                 {
-                    cout << "Esto es un empate" << endl; // si ambos jugadores escogen la misma opcion, se declara un empate 
+                    cout << "Esto es un empate" << endl; // si ambos jugadores escogen la misma opcion, se declara un empate
                     esperar();
                 }
-                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2)) 
+                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2))
                 // se verifican todos los casos en los que pueda ganar el jugador 1
                 {
 
@@ -255,7 +255,12 @@ void jugar(Jugador *frente, Jugador *cola)
             {
 
                 int num2 = (rand() % 3) + 1;
-                int num = (rand() % 3) + 1; // Con esto quiere decir que va a generar un numero aleatoreo entre 1 al 3
+                int num = (rand() % 3) + 1;                             // Con esto quiere decir que va a generar un numero aleatoreo entre 1 al 3
+                const char *jugadas[] = {"Piedra", "Papel", "Tijeras"}; // Se crea un arreglo de strings para mostrar la jugada que hizo cada jugador
+
+                cout << jugador1->jugador << " jugo: " << jugadas[num - 1] << endl;
+                cout << jugador2->jugador << " jugo: " << jugadas[num2 - 1] << endl;
+
                 if (num == num2)
                 {
                     cout << "Esto es un empate" << endl;
@@ -280,7 +285,7 @@ void jugar(Jugador *frente, Jugador *cola)
                 cout << "opcion invalida" << endl;
             }
 
-            jugador2 = jugador2->siguiente; /* El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, 
+            jugador2 = jugador2->siguiente; /* El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1,
             hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores*/
 
         } while (jugador2 != frente); // se va a mover el jugador 2 hasta que este vuelva a ser el mismo que el jugador 1
