@@ -18,7 +18,7 @@ void limpiarPantalla()
     system("clear"); // Para Linux/Mac
 }
 
-void esperar() // commit 1
+void esperar() // Función para pausar la ejecución y esperar a que el usuario presione ENTER
 {
     cout << "\nPresione ENTER para continuar..." << endl;
     cin.ignore();
@@ -258,7 +258,8 @@ void jugar(Jugador *frente, Jugador *cola)
                 int num = (rand() % 3) + 1;                             // Con esto quiere decir que va a generar un numero aleatoreo entre 1 al 3
                 const char *jugadas[] = {"Piedra", "Papel", "Tijeras"}; // Se crea un arreglo de strings para mostrar la jugada que hizo cada jugador
 
-                cout << jugador1->jugador << " jugo: " << jugadas[num - 1] << endl;
+                cout << jugador1->jugador << " jugo: " << jugadas[num - 1] << endl;/* Se muestra la jugada del jugador 1,
+                 se le resta 1 al numero generado para que coincida con el indice del arreglo*/
                 cout << jugador2->jugador << " jugo: " << jugadas[num2 - 1] << endl;
 
                 if (num == num2)
