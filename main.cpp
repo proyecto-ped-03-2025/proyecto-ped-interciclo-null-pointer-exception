@@ -18,6 +18,13 @@ void limpiarPantalla()
     system("clear"); // Para Linux/Mac
 }
 
+void esperar()//commit 1
+{
+    cout << "\nPresione ENTER para continuar..." << endl;
+    cin.ignore();
+    cin.get();
+}
+
 void menu()
 {
     cout << "\033[34m ===================================\033[0m" << endl;
@@ -116,8 +123,9 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
 {
     Jugador *nuevo = new Jugador;
 
-    cout << "Ingrese el nombre: " << endl;
-    cin >> nuevo->jugador;
+    cout << "Ingrese el nombre: " << endl;//agregar un getline para agregar nombres con espacios
+    cin.ignore(); // Limpiar el buffer de entrada
+    getline(cin, nuevo->jugador);
 
     cout << "Ingrese el id unico del jugador:" << endl;
     cin >> nuevo->id;
@@ -127,9 +135,7 @@ void insertarJugador(Jugador *&frente, Jugador *&cola)
 
         cout << "El id ya existe,ingrese otro id y vuelva a intentarlo." << endl
              << endl;
-        cout << "\nPresione ENTER para continuar..." << endl;
-        cin.ignore();
-        cin.get();
+        esperar();
 
         delete nuevo;
         return;
@@ -168,9 +174,7 @@ void jugar(Jugador *frente, Jugador *cola)
 {
     if (estaVacio(frente))
     {
-        cout << "\nPresione ENTER para continuar..." << endl;
-        cin.ignore();
-        cin.get();
+        esperar();
         return;
     }
 
@@ -183,9 +187,7 @@ void jugar(Jugador *frente, Jugador *cola)
     {
         cout << "Se necesita mas de un jugador para poder empezar" << endl
              << endl;
-        cout << "\nPresione ENTER para continuar..." << endl;
-        cin.ignore();
-        cin.get();
+        esperar();
         return;
     }
 
@@ -229,27 +231,24 @@ void jugar(Jugador *frente, Jugador *cola)
 
                 if (opcion == opcion2)
                 {
-                    cout << "Esto es un empate" << endl; // si ambos jugadores escogen la misma opcion, se declara un empate y no se suman puntos a ninguno de los jugadores
+                    cout << "Esto es un empate" << endl; // si ambos jugadores escogen la misma opcion, se declara un empate 
+                    esperar();
                 }
-                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2)) // se verifican todos los casos en los que pueda ganar el jugador 1
+                else if ((opcion == 1 && opcion2 == 3) || (opcion == 2 && opcion2 == 1) || (opcion == 3 && opcion2 == 2)) 
+                // se verifican todos los casos en los que pueda ganar el jugador 1
                 {
 
                     cout << "Ha ganado : " << jugador1->jugador << endl
                          << endl;
                     jugador1->puntaje++; // Si el jugador 1 gana, se le suma un punto a su puntaje
-                    cout << "\nPresione ENTER para continuar..." << endl;
-                    cin.ignore();
-                    cin.get();
+                    esperar();
                 }
                 else
                 {
                     cout << "Ha ganado : " << jugador2->jugador << endl
                          << endl;
                     jugador2->puntaje++; // Caso contrario el jugador 2 gana puntos
-
-                    cout << "\nPresione ENTER para continuar..." << endl;
-                    cin.ignore();
-                    cin.get();
+                    esperar();
                 }
             }
             else if (modo == 2)
@@ -260,23 +259,20 @@ void jugar(Jugador *frente, Jugador *cola)
                 if (num == num2)
                 {
                     cout << "Esto es un empate" << endl;
+                    esperar();
                 }
                 else if ((num == 1 && num2 == 3) || (num == 2 && num2 == 1) || (num == 3 && num2 == 2))
                 {
 
                     cout << "Ha ganado : " << jugador1->jugador << endl;
                     jugador1->puntaje++;
-                    cout << "\nPresione ENTER para continuar..." << endl;
-                    cin.ignore();
-                    cin.get();
+                    esperar();
                 }
                 else
                 {
                     cout << "Ha ganado : " << jugador2->jugador << endl;
                     jugador2->puntaje++;
-                    cout << "\nPresione ENTER para continuar..." << endl;
-                    cin.ignore();
-                    cin.get();
+                    esperar();
                 }
             }
             else
@@ -284,7 +280,8 @@ void jugar(Jugador *frente, Jugador *cola)
                 cout << "opcion invalida" << endl;
             }
 
-            jugador2 = jugador2->siguiente; // El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores
+            jugador2 = jugador2->siguiente; /* El jugador 2 se mueve al siguiente jugador para que se enfrente con el jugador 1, 
+            hasta que el jugador 2 vuelva a ser el mismo que el jugador 1, lo que quiere decir que ya se enfrentaron con todos los jugadores*/
 
         } while (jugador2 != frente); // se va a mover el jugador 2 hasta que este vuelva a ser el mismo que el jugador 1
 
@@ -341,13 +338,13 @@ void mostrarGanador(Jugador *frente)
     cout << "Puntaje: " << ganador->puntaje << endl;
 }
 
+// funcion
+
 void eliminar(Jugador *&frente, Jugador *&cola)
 {
     if (estaVacio(frente))
     {
-        cout << "\nPresione ENTER para continuar..." << endl;
-        cin.ignore();
-        cin.get();
+        esperar();
         return;
     }
 
@@ -364,9 +361,7 @@ void eliminar(Jugador *&frente, Jugador *&cola)
         {
             cout << "Jugador con ID " << idEliminar << " no encontrado." << endl
                  << endl;
-            cout << "\nPresione ENTER para continuar..." << endl;
-            cin.ignore();
-            cin.get();
+            esperar();
             return;
         }
         anterior = actual;
@@ -397,9 +392,7 @@ void eliminar(Jugador *&frente, Jugador *&cola)
 
     delete actual;
     cout << "Jugador con ID " << idEliminar << " eliminado exitosamente." << endl;
-    cout << "\nPresione ENTER para continuar..." << endl;
-    cin.ignore();
-    cin.get();
+    esperar();
 }
 
 int main()
@@ -429,21 +422,15 @@ int main()
             break;
         case 4:
             instrucciones();
-            cout << "\nPresione ENTER para continuar..." << endl;
-            cin.ignore();
-            cin.get();
+            esperar();
             break;
         case 5:
             mostrarGanador(frente);
-            cout << "\nPresione ENTER para continuar..." << endl;
-            cin.ignore();
-            cin.get();
+            esperar();
             break;
         case 6:
             mostrarJugadores(frente);
-            cout << "\nPresione ENTER para continuar..." << endl;
-            cin.ignore();
-            cin.get();
+            esperar();
             break;
         case 7:
             cout << "Gracias por jugar" << endl;
